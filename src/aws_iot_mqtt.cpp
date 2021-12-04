@@ -168,3 +168,71 @@
    #endif
  }
  
+
+void vAwsMqttSubTask( void *pvParameters );
+void vAwsMqttSubTask02( void *pvParameters );
+
+
+void AWS_task_init(void)
+{
+
+    xTaskCreatePinnedToCore(  vAwsMqttSubTask,       
+                "AWS subscribe Task",    
+                2048,              
+                NULL,              
+                4,                 
+                NULL, 
+                0);
+
+
+	
+    xTaskCreatePinnedToCore(  vAwsMqttSubTask02,     
+                "AWS subscribe Task 02", 
+                2048,                   
+                NULL,                   
+                4,                       
+                NULL,
+                0);
+}
+
+
+
+
+
+
+void vAwsMqttSubTask( void *pvParameters )
+{
+  while(1)
+  {
+    #if 1
+    if(msgReceived == 1)
+    {
+//      This code will run whenever a message is received on the SUBSCRIBE_TOPIC_NAME Topic
+        delay(100);
+        msgReceived = 0;
+        printf("testestetsetetwtwtwtwtw");
+        Serial.print("Received Message:");
+        Serial.println("");
+      Serial.println("##############################################");
+    }
+    client.loop();
+    #endif
+
+
+    //printf("testestetsetetwtwtwtwtw");
+
+    delay(100);
+  }
+ 
+}
+
+
+void vAwsMqttSubTask02( void *pvParameters )
+{
+  while(1)
+  {
+
+    delay(100);
+  }
+
+}

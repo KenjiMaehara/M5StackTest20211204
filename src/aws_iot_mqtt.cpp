@@ -152,12 +152,14 @@
    publishMessage(88, 99, 00);
    client.loop();
  
-   digitalWrite(LED, LOW);
+   //digitalWrite(LED, LOW);
    delay(1000);  // MQTTの送信を待つ
  
+    #if 0
    // Deep sleepする時間（マイクロ秒）を計算する
    sleeptime = TIME_TO_SLEEP * 1000000 - (millis() - starttime) * 1000 - 1000000;
    esp_deep_sleep(sleeptime);  // DeepSleepモードに移行
    // ここには戻らない
+   #endif
  }
  

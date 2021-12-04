@@ -2,6 +2,7 @@
 #include <M5Stack.h>
 #include "menu/menu.h"
 #include "network.h"
+#include "task.h"
 
 
 
@@ -22,10 +23,12 @@ void setup() {
   password = passTemp.c_str();
 	printf("AP_SSID:  %s\n",ssid);
 	printf("AP_PASSWORD:  %s\n",password);
-  
+
   WiFi.begin(ssid, password);
   WiFi.onEvent(WiFiEvent);
   delay(2000);
+  
+  task_init();
 }
 
 void loop() {

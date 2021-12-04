@@ -3,8 +3,8 @@
  #define SECRET
  #define THINGNAME "<thing-name>"
  
- const char WIFI_SSID[] = "<ssid>";
- const char WIFI_PASSWORD[] = "<wifi-pw>";
+ //const char WIFI_SSID[] = "<ssid>";
+ //const char WIFI_PASSWORD[] = "<wifi-pw>";
  const char AWS_IOT_ENDPOINT[] = "<aws-iot-endpoint>";
  
  // Amazon Root CA 1
@@ -25,3 +25,6 @@
  -----END RSA PRIVATE KEY-----
  )KEY";
  
+
+
+extern void AWS_init(void);

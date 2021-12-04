@@ -66,8 +66,8 @@
  
  void connectAWS()
  {
-   WiFi.mode(WIFI_STA);
-   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+   //WiFi.mode(WIFI_STA);
+   //WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
  
    Serial.println("Connecting to Wi-Fi");
  
@@ -107,7 +107,7 @@
    Serial.println("AWS IoT Connected!");
  }
  
- void setup0002()
+ void AWS_init(void)
  {
    unsigned long starttime = millis();
    uint64_t sleeptime;

@@ -3,6 +3,7 @@
 #include "menu/menu.h"
 #include "network.h"
 #include "task.h"
+#include "aws_iot_mqtt.h"
 
 
 
@@ -28,6 +29,7 @@ void setup() {
   WiFi.onEvent(WiFiEvent);
   delay(2000);
   
+  AWS_init();
   task_init();
 }
 

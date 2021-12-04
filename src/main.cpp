@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <M5Stack.h>
 #include "menu/menu.h"
+#include "network.h"
 
 
 
@@ -87,6 +88,9 @@ void setup() {
   M5.Lcd.setBrightness(200); //バックライトの明るさを0（消灯）～255（点灯）で制御
   //M5.Lcd.loadFont("filename", SD); // フォント読み込み
   SD_read_forSSID();
+  WiFi.begin(ssid, password);
+  WiFi.onEvent(WiFiEvent);
+  delay(2000);
 }
 
 void loop() {

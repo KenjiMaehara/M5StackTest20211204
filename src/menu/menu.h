@@ -6,3 +6,7 @@ extern void menu_screen_02(void);
 extern void menu_screen_03(void);
 extern void menu_screen_04(void);
 extern void menu_screen_05(void);
+extern void SD_read_forSSID(void);
+
+extern String ssidTemp;
+extern String passTemp;

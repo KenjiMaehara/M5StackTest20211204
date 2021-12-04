@@ -10,3 +10,11 @@ extern void SD_read_forSSID(void);
 
 extern String ssidTemp;
 extern String passTemp;
+
+
+extern String RootCA;
+extern String privateKey;
+extern String certificateKey;
+
+
+extern String AWSEndpoint;

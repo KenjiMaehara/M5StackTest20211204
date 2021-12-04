@@ -6,6 +6,7 @@
  #include <MQTTClient.h>
 #include <ArduinoJson.h>
  #include <WiFi.h>
+ #include "menu/menu.h"
  
  #define TIME_TO_SLEEP  300  // 測定周期（秒）
  
@@ -78,13 +79,23 @@
    Serial.println("");
  
    // Configure WiFiClientSecure to use the AWS IoT device credentials
+   #if 0
    net.setCACert(AWS_CERT_CA);
    net.setCertificate(AWS_CERT_CRT);
-   net.setPrivateKey(AWS_CERT_PRIVATE);
+ 
+    #endif
+
+   net.setCACert(RootCA.c_str());
+   net.setCertificate(certificateKey.c_str());
+    net.setPrivateKey(privateKey.c_str());
+
+
  
    // Connect to the MQTT broker on the AWS endpoint we defined earlier
-   client.begin(AWS_IOT_ENDPOINT, 8883, net);
- 
+   //client.begin(AWS_IOT_ENDPOINT, 8883, net);
+    client.begin(AWSEndpoint.c_str(), 8883, net);
+
+
    // Create a message handler
    client.onMessage(messageHandler);
  

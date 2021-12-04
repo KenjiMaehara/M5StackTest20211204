@@ -4,6 +4,12 @@
 
 String ssidTemp;
 String passTemp;
+String AWSEndpoint;
+
+String RootCA;
+String privateKey;
+String certificateKey;
+
 
 void SD_read_forSSID(void)
 {
@@ -50,6 +56,10 @@ void SD_read_forSSID(void)
 			{
 				passTemp = d.substring(d.indexOf(":")+1);
 			}
+            else if (strstr(d.c_str(),"AWS_ENDPOINT") != NULL)
+			{
+				AWSEndpoint = d.substring(d.indexOf(":")+1);
+			}
 
 			d="";
 		}
@@ -65,6 +75,44 @@ void SD_read_forSSID(void)
 
 	printf("SSID:  %s\n",ssidTemp.c_str());
 	printf("PASSWORD:  %s\n",passTemp.c_str());
+    printf("AWS_ENDPOINT:  %s\n",AWSEndpoint.c_str());
+
+
+    File RootCAFile = SD.open("/AWS_keys/AmazonRootCA1.pem", FILE_READ);
+
+	while(RootCAFile.available())
+	{
+		char s = RootCAFile.read();
+        RootCA+=s;
+    }
+
+    printf("RootCA:  %s\n",RootCA.c_str());
+
+
+
+    File certificateFile = SD.open("/AWS_keys/certificate.pem.crt", FILE_READ);
+
+	while(certificateFile.available())
+	{
+		char s = certificateFile.read();
+        certificateKey+=s;
+    }
+
+    printf("certificateKey:  %s\n",certificateKey.c_str());
+
+
+    #if 1
+    File privateFile = SD.open("/AWS_keys/private.pem.key", FILE_READ);
+
+	while(privateFile.available())
+	{
+		char s = privateFile.read();
+        privateKey+=s;
+    }
+
+    printf("privateKey:  %s\n",privateKey.c_str());
+    #endif
+
 
 	//printf("test:  %s\n",ssidTemp.c_str());
 	

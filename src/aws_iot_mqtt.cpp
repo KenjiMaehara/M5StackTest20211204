@@ -22,6 +22,8 @@
  
  WiFiClientSecure net = WiFiClientSecure();
  MQTTClient client = MQTTClient(256);
+
+ int msgReceived = 0;
  
  #if 0
  int computeDiscomfortIndex(float t, float h)
@@ -58,6 +60,7 @@
  }
  
  void messageHandler(String &topic, String &payload) {
+    msgReceived = 1; 
    Serial.println("incoming: " + topic + " - " + payload);
  
  //  StaticJsonDocument<200> doc;
@@ -155,6 +158,8 @@
    //digitalWrite(LED, LOW);
    delay(1000);  // MQTTの送信を待つ
  
+
+
     #if 0
    // Deep sleepする時間（マイクロ秒）を計算する
    sleeptime = TIME_TO_SLEEP * 1000000 - (millis() - starttime) * 1000 - 1000000;

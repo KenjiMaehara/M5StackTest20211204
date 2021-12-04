@@ -8,6 +8,7 @@
 
 
 
+
 void setup() {
   // put your setup code here, to run once:
   M5.begin();
@@ -35,12 +36,25 @@ void setup() {
 
 void loop() {
 
+  #if 0
   menu1();
   menu_screen_02();
   menu_screen_03();
   menu_screen_04();
   menu_screen_05();
- 
+  #endif
+
+    if(msgReceived == 1)
+    {
+//      This code will run whenever a message is received on the SUBSCRIBE_TOPIC_NAME Topic
+        delay(100);
+        msgReceived = 0;
+        printf("testestetsetetwtwtwtwtw");
+        Serial.print("Received Message:");
+        Serial.println("");
+      Serial.println("##############################################");
+    }
+    client.loop();
   
  
 }

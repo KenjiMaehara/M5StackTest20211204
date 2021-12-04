@@ -1,4 +1,5 @@
 #include <pgmspace.h>
+#include <MQTTClient.h>
  
  #define SECRET
  #define THINGNAME "<thing-name>"
@@ -28,3 +29,6 @@
 
 
 extern void AWS_init(void);
+extern int msgReceived;
+
+extern MQTTClient client;

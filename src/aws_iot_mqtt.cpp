@@ -12,7 +12,7 @@
  
  // The MQTT topics that this device should publish/subscribe
  #define AWS_IOT_PUBLISH_TOPIC   "esp32/pub"
- #define AWS_IOT_SUBSCRIBE_TOPIC "esp32/sub"
+ #define AWS_IOT_SUBSCRIBE_TOPIC "esp32/sub/#"
  
  // pin
  #define LED 2
@@ -24,6 +24,7 @@
  MQTTClient client = MQTTClient(256);
 
  int msgReceived = 0;
+ int msgTFTReceived = 0;
  
  #if 0
  int computeDiscomfortIndex(float t, float h)
@@ -61,6 +62,7 @@
  
  void messageHandler(String &topic, String &payload) {
     msgReceived = 1; 
+    msgTFTReceived = 1;
    Serial.println("incoming: " + topic + " - " + payload);
  
  //  StaticJsonDocument<200> doc;

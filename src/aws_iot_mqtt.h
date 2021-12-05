@@ -33,3 +33,4 @@ extern int msgReceived;
 
 extern MQTTClient client;
 extern void AWS_task_init(void);
+extern int msgTFTReceived;

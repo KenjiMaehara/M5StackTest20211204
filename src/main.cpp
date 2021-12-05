@@ -37,12 +37,18 @@ void setup() {
 
 void loop() {
 
-  #if 0
-  menu1();
-  menu_screen_02();
-  menu_screen_03();
-  menu_screen_04();
-  menu_screen_05();
+  #if 1
+  if(msgTFTReceived == 1)
+  {
+    //menu1();
+    //menu_screen_02();
+    menu_screen_03();
+    //menu_screen_04();
+    //menu_screen_05();
+    M5.Lcd.fillScreen(BLACK);
+    msgTFTReceived = 0;
+  }
+
   #endif
   delay(100);
 

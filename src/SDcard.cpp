@@ -1,5 +1,6 @@
 #include <Arduino.h>
-#include <M5Stack.h>
+//#include <M5Stack.h>
+#include <M5Core2.h>
 #include "menu/menu.h"
 
 String ssidTemp;
@@ -17,7 +18,7 @@ void SD_read_forSSID(void)
 	
 
 
-	if (!SD.begin()) 
+	if (!SD.begin(4)) 
     {
         Serial.println("SD initialization failed!\n");
         return;

@@ -2,6 +2,7 @@
 #include <M5Core2.h>
 #include "menu/menu.h"
 #include "network.h"
+#include "aws_iot_mqtt.h"
 
 
 void setup() {

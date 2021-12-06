@@ -17,6 +17,15 @@ void setup() {
   password = passTemp.c_str();
 	printf("AP_SSID:  %s\n",ssid);
 	printf("AP_PASSWORD:  %s\n",password);
+
+
+  WiFi.begin(ssid, password);
+  WiFi.onEvent(WiFiEvent);
+  delay(2000);
+
+  AWS_init();
+  AWS_task_init();
+
 }
 
 void loop() 

@@ -3,6 +3,7 @@
 #include "menu/menu.h"
 #include "network.h"
 #include "aws_iot_mqtt.h"
+#include "sound.h"
 
 
 void setup() {
@@ -25,6 +26,7 @@ void setup() {
 
   AWS_init();
   AWS_task_init();
+
 
 }
 

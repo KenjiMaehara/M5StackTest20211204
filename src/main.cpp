@@ -18,6 +18,19 @@ void setup() {
 	printf("AP_PASSWORD:  %s\n",password);
 }
 
-void loop() {
+void loop() 
+{
+#if 1
+  if(msgTFTReceived == 1)
+  {
+  
+    menu_screen_03();
+
+    M5.Lcd.fillScreen(BLACK);
+    msgTFTReceived = 0;
+  }
+
+  #endif
+  delay(100);
 
 }

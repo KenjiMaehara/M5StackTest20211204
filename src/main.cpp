@@ -1,4 +1,4 @@
-#include <Arduino.h>
+//#include <Arduino.h>
 #include <M5Core2.h>
 #include "menu/menu.h"
 #include "network.h"

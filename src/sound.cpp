@@ -41,3 +41,45 @@ void sound_init(void)
   //wav = new AudioGeneratorWAV();
 	//wav->begin(id3, out);
 }
+
+
+
+void vSoundTask( void *pvParameters );
+
+void sound_task_init(void)
+{
+
+    xTaskCreatePinnedToCore(  vSoundTask,       
+                "sound Task",    
+                2048,              
+                NULL,              
+                4,                 
+                NULL, 
+                1);
+}
+
+
+void vSoundTask( void *pvParameters )
+{
+  sound_init();
+
+  while(1)
+  {
+    #if 0
+
+    if (mp3->isRunning()) 
+    {
+      if (!mp3->loop()) mp3->stop();
+    }
+    else
+    {
+      Serial.printf("MP3 done\n");
+      delay(1000);
+      sound_init();
+      //mp3->begin(id3, out);
+      //delay(1000);
+    }
+    #endif
+    delay(100);
+  }
+}

@@ -8,6 +8,7 @@
 
 
 extern void sound_init(void);
+extern void sound_task_init(void);
 
 //extern AudioGeneratorWAV *wav;
 extern AudioGeneratorMP3 *mp3;

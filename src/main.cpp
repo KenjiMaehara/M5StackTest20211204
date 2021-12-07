@@ -27,12 +27,14 @@ void setup() {
   AWS_init();
   AWS_task_init();
 
+  M5.Axp.SetSpkEnable(true); 
+  sound_init();
 
 }
 
 void loop() 
 {
-#if 1
+  #if 1
   if(msgTFTReceived == 1)
   {
   
@@ -43,6 +45,25 @@ void loop()
   }
 
   #endif
+
+
+  #if 1
+
+  if (mp3->isRunning()) 
+  {
+    if (!mp3->loop()) mp3->stop();
+  }
+  else
+  {
+    Serial.printf("MP3 done\n");
+    delay(1000);
+    sound_init();
+    //mp3->begin(id3, out);
+    //delay(1000);
+  }
+
+  #endif
+
   delay(100);
 
 }

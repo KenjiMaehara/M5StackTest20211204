@@ -80,6 +80,6 @@ void vSoundTask( void *pvParameters )
       //delay(1000);
     }
     #endif
-    delay(100);
+    vTaskDelay(100);
   }
 }

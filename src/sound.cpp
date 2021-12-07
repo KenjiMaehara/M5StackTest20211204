@@ -65,7 +65,7 @@ void vSoundTask( void *pvParameters )
 
   while(1)
   {
-    #if 0
+    #if 1
 
     if (mp3->isRunning()) 
     {

@@ -51,11 +51,11 @@ void sound_task_init(void)
 
     xTaskCreatePinnedToCore(  vSoundTask,       
                 "sound Task",    
-                4096,              
+                8192,              
                 NULL,              
                 4,                 
                 NULL, 
-                0);
+                1);
 }
 
 
@@ -80,6 +80,6 @@ void vSoundTask( void *pvParameters )
       //delay(1000);
     }
     #endif
-    vTaskDelay(100);
+    //vTaskDelay(100);
   }
 }

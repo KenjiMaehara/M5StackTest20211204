@@ -1,53 +1,67 @@
-//#include <Arduino.h>
+//     https://gist.github.com/mongonta0716/18c28bff2dc533d8b51903c939a66a61
+
 #include <M5Core2.h>
-#include "menu/menu.h"
-#include "network.h"
-#include "aws_iot_mqtt.h"
-#include "sound.h"
+#include <driver/i2s.h>
+#include "AudioFileSourceSD.h"
+#include "AudioFileSourceID3.h"
+//#include "AudioGeneratorWAV.h"
+#include "AudioGeneratorMP3.h"
+#include "AudioOutputI2S.h"
 
 
-void setup() {
-  M5.begin(true, true, true, true);
-  M5.Lcd.setTextSize(3);
-  M5.Lcd.print("Hello World");
+//AudioGeneratorWAV *wav = NULL;
+AudioGeneratorMP3 *mp3;
+AudioFileSourceSD *file;
+AudioOutputI2S *out;
+AudioFileSourceID3 *id3;
 
 
-  SD_read_forSSID();
+//const int I2S_NUM_0 = 0;
 
-  ssid = ssidTemp.c_str();
-  password = passTemp.c_str();
-	printf("AP_SSID:  %s\n",ssid);
-	printf("AP_PASSWORD:  %s\n",password);
+#define BCLK_PIN 12
+#define LRCK_PIN 0
+#define SADTA_PIN 2
+#define EXTERNAL_I2S 0
+#define OUTPUT_GAIN 10
 
+void setup(void)
+{
+  M5.begin();
+  M5.Axp.SetSpkEnable(true);
 
-  WiFi.begin(ssid, password);
-  WiFi.onEvent(WiFiEvent);
-  delay(2000);
-
-  AWS_init();
-  AWS_task_init();
-
-  //M5.Axp.SetSpkEnable(true); 
-  sound_task_init();
-  //sound_init();
-
+  file = new AudioFileSourceSD("/mp3/pafu.mp3");
+  id3 = new AudioFileSourceID3(file);
+  out = new AudioOutputI2S(I2S_NUM_0, EXTERNAL_I2S); // Output to builtInDAC
+  out->SetPinout(BCLK_PIN, LRCK_PIN, SADTA_PIN);
+  out->SetOutputModeMono(true);
+  out->SetGain((float)OUTPUT_GAIN/100.0);
+  mp3 = new AudioGeneratorMP3();
+  mp3->begin(id3, out);
+  //wav = new AudioGeneratorWAV();
+	//wav->begin(id3, out);
 }
+
 
 void loop() 
 {
-  #if 1
-  if(msgTFTReceived == 1)
+  while(1)
   {
-  
-    menu_screen_03();
+    #if 1
 
-    M5.Lcd.fillScreen(BLACK);
-    msgTFTReceived = 0;
+    if (mp3->isRunning()) 
+    {
+      if (!mp3->loop()) mp3->stop();
+    }
+    else
+    {
+      Serial.printf("MP3 done\n");
+      delay(1000);
+      //sound_init();
+      //mp3->begin(id3, out);
+      //delay(1000);
+    }
+    #endif
+
   }
-
-  #endif
-
-
-  delay(100);
 
 }

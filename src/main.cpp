@@ -24,9 +24,9 @@ void setup() {
  
   PUB_TOPIC += AWS_IOT_PUBLISH_TOPIC;
   PUB_TOPIC += "/";
-  PUB_TOPIC += serialID;
-  PUB_TOPIC += "/";
   PUB_TOPIC += conpanyID;
+  PUB_TOPIC += "/";
+  PUB_TOPIC += serialID;
   //PUB_TOPIC += conpanyID.c_str();
   //PUB_TOPIC += serialID.c_str();
   printf("PUB_TOPIC:  %s\n",PUB_TOPIC.c_str());

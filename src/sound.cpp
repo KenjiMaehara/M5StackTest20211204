@@ -9,6 +9,7 @@
 #include "AudioGeneratorMP3.h"
 #include "AudioOutputI2S.h"
 #include "sound.h"
+#include "menu/menu.h"
 
 //AudioGeneratorWAV *wav = NULL;
 AudioGeneratorMP3 *mp3;
@@ -23,7 +24,7 @@ AudioFileSourceID3 *id3;
 #define LRCK_PIN 0
 #define SADTA_PIN 2
 #define EXTERNAL_I2S 0
-#define OUTPUT_GAIN 10
+#define OUTPUT_GAIN 80
 
 void sound_init(void)
 {
@@ -67,6 +68,12 @@ void vSoundTask( void *pvParameters )
   {
     #if 1
 
+    if(soundPlayFlag == true)
+    {
+      sound_init();
+    }
+
+    soundPlayFlag = false;
     if (mp3->isRunning()) 
     {
       if (!mp3->loop()) mp3->stop();
@@ -75,10 +82,8 @@ void vSoundTask( void *pvParameters )
     {
       Serial.printf("MP3 done\n");
       delay(1000);
-      sound_init();
-      //mp3->begin(id3, out);
-      //delay(1000);
     }
+
     #endif
     //vTaskDelay(100);
   }

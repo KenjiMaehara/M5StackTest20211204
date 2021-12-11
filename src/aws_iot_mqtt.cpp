@@ -21,8 +21,9 @@
  WiFiClientSecure net = WiFiClientSecure();
  MQTTClient client = MQTTClient(256);
 
- int msgReceived = 0;
- int msgTFTReceived = 0;
+ int msgReceived = false;
+ int msgTFTReceived = false;
+ int soundPlayFlag = false;
  
  #if 0
  int computeDiscomfortIndex(float t, float h)
@@ -59,8 +60,9 @@
  }
  
  void messageHandler(String &topic, String &payload) {
-    msgReceived = 1; 
-    msgTFTReceived = 1;
+    msgReceived = true; 
+    msgTFTReceived = true;
+    soundPlayFlag = true;
    Serial.println("incoming: " + topic + " - " + payload);
  
  //  StaticJsonDocument<200> doc;
@@ -115,7 +117,7 @@
    }
  
    // Subscribe to a topic
-   client.subscribe(AWS_IOT_SUBSCRIBE_TOPIC);
+   client.subscribe(SUB_TOPIC.c_str());
  
    Serial.println("");
    Serial.println("AWS IoT Connected!");

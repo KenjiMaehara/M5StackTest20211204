@@ -15,6 +15,7 @@ extern String serialID;
 extern String conpanyID;
 
 extern String PUB_TOPIC;
+extern String SUB_TOPIC;
 
 
 extern String RootCA;
@@ -23,3 +24,5 @@ extern String certificateKey;
 
 
 extern String AWSEndpoint;
+
+extern int soundPlayFlag;

@@ -6,6 +6,7 @@
 #include "sound.h"
 
 String PUB_TOPIC;
+String SUB_TOPIC;
 
 void setup() {
   M5.begin(true, true, true, true);
@@ -30,6 +31,15 @@ void setup() {
   //PUB_TOPIC += conpanyID.c_str();
   //PUB_TOPIC += serialID.c_str();
   printf("PUB_TOPIC:  %s\n",PUB_TOPIC.c_str());
+  printf("\n");
+
+  SUB_TOPIC += AWS_IOT_PUBLISH_TOPIC;
+  SUB_TOPIC += "/";
+  SUB_TOPIC += conpanyID;
+  SUB_TOPIC += "/";
+  SUB_TOPIC += "#";
+  printf("SUB_TOPIC:  %s\n",SUB_TOPIC.c_str());
+  printf("\n");
 
   WiFi.begin(ssid, password);
   WiFi.onEvent(WiFiEvent);

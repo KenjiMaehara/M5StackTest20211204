@@ -55,7 +55,7 @@
    char jsonBuffer[512];
    serializeJson(doc, jsonBuffer); // print to client
  
-   client.publish(AWS_IOT_PUBLISH_TOPIC, jsonBuffer);
+   client.publish(PUB_TOPIC.c_str(), jsonBuffer);
  }
  
  void messageHandler(String &topic, String &payload) {

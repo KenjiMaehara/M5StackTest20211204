@@ -68,20 +68,22 @@ void vSoundTask( void *pvParameters )
   {
     #if 1
 
-    if(soundPlayFlag == true)
-    {
-      sound_init();
-    }
+  
 
-    soundPlayFlag = false;
+
     if (mp3->isRunning()) 
     {
       if (!mp3->loop()) mp3->stop();
     }
     else
     {
-      Serial.printf("MP3 done\n");
-      delay(1000);
+      if(soundPlayFlag == true)
+      {
+        sound_init();
+      }
+      soundPlayFlag = false;
+      //Serial.printf("MP3 done\n");
+      delay(100);
     }
 
     #endif

@@ -6,6 +6,8 @@
 String ssidTemp;
 String passTemp;
 String AWSEndpoint;
+String serialID;
+String conpanyID;
 
 String RootCA;
 String privateKey;
@@ -61,6 +63,15 @@ void SD_read_forSSID(void)
 			{
 				AWSEndpoint = d.substring(d.indexOf(":")+1);
 			}
+            else if (strstr(d.c_str(),"SID") != NULL)
+			{
+				serialID = d.substring(d.indexOf(":")+1);
+			}
+            else if (strstr(d.c_str(),"CID") != NULL)
+			{
+				conpanyID = d.substring(d.indexOf(":")+1);
+			}
+
 
 			d="";
 		}
@@ -77,7 +88,8 @@ void SD_read_forSSID(void)
 	printf("SSID:  %s\n",ssidTemp.c_str());
 	printf("PASSWORD:  %s\n",passTemp.c_str());
     printf("AWS_ENDPOINT:  %s\n",AWSEndpoint.c_str());
-
+    printf("SID:  %s\n",serialID.c_str());
+	printf("CID:  %s\n",conpanyID.c_str());
 
     File RootCAFile = SD.open("/AWS_keys/AmazonRootCA1.pem", FILE_READ);
 

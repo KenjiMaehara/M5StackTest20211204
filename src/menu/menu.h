@@ -11,6 +11,8 @@ extern void SD_read_forSSID(void);
 
 extern String ssidTemp;
 extern String passTemp;
+extern String serialID;
+extern String conpanyID;
 
 
 extern String RootCA;

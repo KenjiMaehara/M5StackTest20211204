@@ -27,6 +27,9 @@
  )KEY";
  
 
+ // The MQTT topics that this device should publish/subscribe
+ #define AWS_IOT_PUBLISH_TOPIC   "esp32/pub"
+ #define AWS_IOT_SUBSCRIBE_TOPIC "esp32/pub/#"
 
 extern void AWS_init(void);
 extern int msgReceived;

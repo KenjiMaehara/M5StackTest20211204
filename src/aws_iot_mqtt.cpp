@@ -10,9 +10,7 @@
  
  #define TIME_TO_SLEEP  300  // 測定周期（秒）
  
- // The MQTT topics that this device should publish/subscribe
- #define AWS_IOT_PUBLISH_TOPIC   "esp32/pub"
- #define AWS_IOT_SUBSCRIBE_TOPIC "esp32/pub/#"
+
  
  // pin
  #define LED 2

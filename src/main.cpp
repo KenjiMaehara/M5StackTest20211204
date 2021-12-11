@@ -1,10 +1,11 @@
-//#include <Arduino.h>
+#include <Arduino.h>
 #include <M5Core2.h>
 #include "menu/menu.h"
 #include "network.h"
 #include "aws_iot_mqtt.h"
 #include "sound.h"
 
+String PUB_TOPIC;
 
 void setup() {
   M5.begin(true, true, true, true);
@@ -18,7 +19,17 @@ void setup() {
   password = passTemp.c_str();
 	printf("AP_SSID:  %s\n",ssid);
 	printf("AP_PASSWORD:  %s\n",password);
-
+	printf("SID:  %s\n",serialID);
+	printf("CID:  %s\n",conpanyID);
+ 
+  PUB_TOPIC += AWS_IOT_PUBLISH_TOPIC;
+  PUB_TOPIC += "/";
+  PUB_TOPIC += serialID;
+  PUB_TOPIC += "/";
+  PUB_TOPIC += conpanyID;
+  //PUB_TOPIC += conpanyID.c_str();
+  //PUB_TOPIC += serialID.c_str();
+  printf("PUB_TOPIC:  %s\n",PUB_TOPIC.c_str());
 
   WiFi.begin(ssid, password);
   WiFi.onEvent(WiFiEvent);

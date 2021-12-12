@@ -56,6 +56,7 @@ void setup() {
 
 void loop() 
 {
+  M5.update();
   #if 1
   if(msgTFTReceived == 1)
   {
@@ -64,6 +65,14 @@ void loop()
 
     M5.Lcd.fillScreen(BLACK);
     msgTFTReceived = 0;
+  }
+
+
+  if (M5.BtnA.wasPressed())
+  {
+    printf("BtnA.wasPressed Test \n");
+    menu_screen_03();
+    M5.Lcd.fillScreen(BLACK);
   }
 
   #endif

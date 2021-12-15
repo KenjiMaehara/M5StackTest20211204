@@ -37,3 +37,5 @@ extern int msgReceived;
 extern MQTTClient client;
 extern void AWS_task_init(void);
 extern int msgTFTReceived;
+extern void publishMessage(float temperature, float humidity, int discomfort_index);
+extern void connectAWS();

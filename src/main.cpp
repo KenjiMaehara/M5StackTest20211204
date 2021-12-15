@@ -71,8 +71,16 @@ void loop()
   if (M5.BtnA.wasPressed())
   {
     printf("BtnA.wasPressed Test \n");
-    menu_screen_03();
-    M5.Lcd.fillScreen(BLACK);
+    //menu_screen_03();
+    //M5.Lcd.fillScreen(BLACK);
+    //connectAWS();
+     Serial.println("");
+    publishMessage(88, 99, 00);
+     Serial.println("");
+    //client.loop();
+    //digitalWrite(LED, LOW);
+    delay(1000);  // MQTTの送信を待つ
+  
   }
 
   #endif

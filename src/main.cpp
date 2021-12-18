@@ -70,6 +70,14 @@ void loop()
 
   if (M5.BtnA.wasPressed())
   {
+    #if 0
+    if(AWSConnectionCheck()==false);
+    {
+      AWS_init();
+      //tryAWSReconnect=false;
+    }
+    #endif
+
     printf("BtnA.wasPressed Test \n");
     //menu_screen_03();
     //M5.Lcd.fillScreen(BLACK);

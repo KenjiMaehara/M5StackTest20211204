@@ -123,6 +123,20 @@
    Serial.println("AWS IoT Connected!");
  }
  
+
+bool AWSConnectionCheck(void)
+{
+   if(!client.connected()){
+     Serial.println("AWS IoT Timeout!");
+     return false;
+   }
+   else
+   {
+     return true;
+   } 
+}
+
+
  void AWS_init(void)
  {
    unsigned long starttime = millis();

@@ -4,15 +4,43 @@
 #include "network.h"
 #include "aws_iot_mqtt.h"
 #include "sound.h"
+#include "esp_system.h"
+
 
 String PUB_TOPIC;
 String SUB_TOPIC;
+
+
+//const int button = 0;         //gpio to use to trigger delay
+const int wdtTimeout = 10000;  //time in ms to trigger the watchdog
+hw_timer_t *timer = NULL;
+
+
+
+#if 1
+void IRAM_ATTR resetModule(void) {
+  ets_printf("reboot\n");
+  esp_restart();
+}
+#endif
+ 
 
 void setup() {
   M5.begin(true, true, true, true);
   M5.Lcd.setTextSize(3);
   M5.Lcd.print("Hello World");
   //M5.Lcd.print("ハロー");
+
+
+
+  //pinMode(button, INPUT_PULLUP);                    //init control pin
+  timer = timerBegin(0, 80, true);                  //timer 0, div 80
+  timerAttachInterrupt(timer,&resetModule, true);  //attach callback
+  timerAlarmWrite(timer, wdtTimeout * 1000, false); //set time in us
+  timerAlarmEnable(timer);                          //enable interrupt
+
+ 
+
 
   SD_read_forSSID();
 
@@ -99,6 +127,7 @@ void loop()
 
   #endif
 
+  timerWrite(timer, 0); //reset timer (feed watchdog)
 
   delay(100);
 

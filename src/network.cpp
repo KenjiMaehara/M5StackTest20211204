@@ -1,3 +1,4 @@
+#include <M5Core2.h>
 #include <Arduino.h>
 #include <WiFi.h>
 #include "network.h"
@@ -17,6 +18,10 @@ void WiFiEvent(WiFiEvent_t event)
         Serial.println("WiFi connected");
         Serial.println("IP address: ");
         Serial.println(WiFi.localIP());
+        M5.Lcd.fillScreen(BLACK);
+        M5.Lcd.setTextSize(3);
+        M5.Lcd.println(WiFi.localIP());
+        M5.Lcd.print("WiFi connected");
         ap_connect = false;
         break;
     case SYSTEM_EVENT_STA_DISCONNECTED:

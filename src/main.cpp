@@ -12,7 +12,7 @@ void setup() {
   M5.begin(true, true, true, true);
   M5.Lcd.setTextSize(3);
   M5.Lcd.print("Hello World");
-
+  //M5.Lcd.print("ハロー");
 
   SD_read_forSSID();
 

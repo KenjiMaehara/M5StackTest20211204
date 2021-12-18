@@ -70,7 +70,7 @@ void loop()
 
   if (M5.BtnA.wasPressed())
   {
-    #if 1
+    #if 0
     if(AWSConnectionCheck()==false);
     {
       AWS_init();

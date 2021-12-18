@@ -19,12 +19,13 @@ void WiFiEvent(WiFiEvent_t event)
         Serial.println("WiFi connected");
         Serial.println("IP address: ");
         Serial.println(WiFi.localIP());
-        #if 0
+        #if 1
         M5.Lcd.fillScreen(BLACK);
         M5.Lcd.setCursor(10, 10); //文字表示の左上位置を設定
         M5.Lcd.setTextSize(3);
         M5.Lcd.println(WiFi.localIP());
         M5.Lcd.print("WiFi connected");
+         delay(2000);
         #endif
         ap_connect = false;
         //tryAWSReconnect = true;

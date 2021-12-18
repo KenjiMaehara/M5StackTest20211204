@@ -78,6 +78,12 @@ void loop()
     }
     #endif
 
+    if(gPubCount > 3)
+    {
+      ESP.restart();
+    }
+
+    gPubCount++;
     printf("BtnA.wasPressed Test \n");
     //menu_screen_03();
     //M5.Lcd.fillScreen(BLACK);

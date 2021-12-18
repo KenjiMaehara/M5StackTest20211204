@@ -213,6 +213,7 @@ void AWS_task_init(void)
 
 
 
+int gPubCount = 0;
 
 
 
@@ -230,6 +231,7 @@ void vAwsMqttSubTask( void *pvParameters )
         Serial.print("Received Message:");
         Serial.println("");
       Serial.println("##############################################");
+      gPubCount--;
     }
     client.loop();
     #endif

@@ -33,6 +33,7 @@
 
 extern void AWS_init(void);
 extern int msgReceived;
+extern int gPubCount;
 
 extern MQTTClient client;
 extern void AWS_task_init(void);

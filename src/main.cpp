@@ -12,7 +12,7 @@ String SUB_TOPIC;
 
 
 //const int button = 0;         //gpio to use to trigger delay
-const int wdtTimeout = 10000;  //time in ms to trigger the watchdog
+const int wdtTimeout = 20000;  //time in ms to trigger the watchdog
 hw_timer_t *timer = NULL;
 
 
@@ -20,6 +20,13 @@ hw_timer_t *timer = NULL;
 #if 1
 void IRAM_ATTR resetModule(void) {
   ets_printf("reboot\n");
+  M5.Lcd.fillScreen(BLACK);
+  M5.Lcd.setCursor(10, 10); //文字表示の左上位置を設定
+  M5.Lcd.setTextSize(5);
+  M5.Lcd.print("force restart");
+  //M5.Lcd.print(test);
+  M5.Lcd.println("");
+  delay(2000);  
   esp_restart();
 }
 #endif
@@ -82,16 +89,29 @@ void setup() {
 
 }
 
+int test = 0;
+
 void loop() 
 {
   M5.update();
   #if 1
   if(msgTFTReceived == 1)
   {
+    test++;
   
     menu_screen_03();
 
     M5.Lcd.fillScreen(BLACK);
+
+    M5.Lcd.fillScreen(BLACK);
+    M5.Lcd.setCursor(10, 10); //文字表示の左上位置を設定
+    M5.Lcd.setTextSize(3);
+    M5.Lcd.print("BtnA wasPressed Test");
+    M5.Lcd.print(test);
+    M5.Lcd.println("");
+    delay(2000);
+
+
     msgTFTReceived = 0;
   }
 
@@ -119,6 +139,7 @@ void loop()
      Serial.println("");
     publishMessage(88, 99, 00);
      Serial.println("");
+
     //client.loop();
     //digitalWrite(LED, LOW);
     delay(1000);  // MQTTの送信を待つ

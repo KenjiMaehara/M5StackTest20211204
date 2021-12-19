@@ -144,9 +144,8 @@ void loop()
     //connectAWS();
      Serial.println("");
     publishMessage(88, 99, 00);
-     Serial.println("");
-
-    //client.loop();
+    Serial.println("");
+    client.loop();
     //digitalWrite(LED, LOW);
     delay(1000);  // MQTTの送信を待つ
     test++;

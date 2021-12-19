@@ -124,19 +124,6 @@
  }
  
 
-bool AWSConnectionCheck(void)
-{
-   if(!client.connected()){
-     Serial.println("AWS IoT Timeout!");
-     return false;
-   }
-   else
-   {
-     return true;
-   } 
-}
-
-
  void AWS_init(void)
  {
    unsigned long starttime = millis();
@@ -168,8 +155,8 @@ bool AWSConnectionCheck(void)
    //Serial.printf("DInd: %d", di);
    Serial.println("");
  
-   publishMessage(88, 99, 00);
-   client.loop();
+   //publishMessage(88, 99, 00);
+   //client.loop();
  
    //digitalWrite(LED, LOW);
    delay(1000);  // MQTTの送信を待つ
@@ -232,11 +219,13 @@ void vAwsMqttSubTask( void *pvParameters )
         Serial.println("");
       Serial.println("##############################################");
       gPubCount--;
+      //client.loop();
+       //connectAWS();
     }
     client.loop();
     #endif
 
-
+    Serial.println("vAwsMqttSubTask");
     //printf("testestetsetetwtwtwtwtw");
 
     vTaskDelay(100);

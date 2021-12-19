@@ -1,4 +1,5 @@
 #include <M5Core2.h>
+#include <AXP192.h>
 #include "aws_iot_mqtt.h"
 #include "time.h"
 //#include <DHT.h>
@@ -171,7 +172,14 @@
    // ここには戻らない
    #endif
  }
- 
+
+AXP192 power;
+
+void vibration() {
+  power.SetLDOEnable(3, true);  // 3番をtrueにしてバイブレーション開始
+  delay(100);                   // バイブレーションの長さ（ms）はお好みで調整
+  power.SetLDOEnable(3, false); // 3番をfalseにしてバイブレーション修了
+}
 
 void vAwsMqttSubTask( void *pvParameters );
 void vAwsMqttSubTask02( void *pvParameters );
@@ -182,7 +190,7 @@ void AWS_task_init(void)
 
     xTaskCreatePinnedToCore(  vAwsMqttSubTask,       
                 "AWS subscribe Task",    
-                4096,              
+                8192,              
                 NULL,              
                 4,                 
                 NULL, 
@@ -192,13 +200,12 @@ void AWS_task_init(void)
 	
     xTaskCreatePinnedToCore(  vAwsMqttSubTask02,     
                 "AWS subscribe Task 02", 
-                4096,                   
+                8192,                   
                 NULL,                   
                 4,                       
                 NULL,
                 0);
 }
-
 
 
 int gPubCount = 0;
@@ -220,6 +227,7 @@ void vAwsMqttSubTask( void *pvParameters )
         Serial.println("");
       Serial.println("##############################################");
       gPubCount--;
+      vibration();
       //client.loop();
        //connectAWS();
     }

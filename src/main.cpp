@@ -89,72 +89,10 @@ void setup() {
 
 }
 
-int test = 0;
-int oldTest = 0;
 
 void loop() 
 {
-  M5.update();
-  #if 1
-  if(msgTFTReceived == 1)
-  {
-    menu_screen_03();
 
-    M5.Lcd.fillScreen(BLACK);
-    delay(2000);
-    msgTFTReceived = 0;
-  }
-
-  #if 0
-  if(test != oldTest)
-  {
-    oldTest = test;
-
-    M5.Lcd.fillScreen(BLACK);
-    M5.Lcd.setCursor(10, 10); //文字表示の左上位置を設定
-    M5.Lcd.setTextSize(3);
-    M5.Lcd.print("BtnA wasPressed Test");
-    M5.Lcd.print(test);
-    M5.Lcd.println("");
-    delay(2000);
-  }
-  #endif
-
-
-
-  if (M5.BtnA.wasPressed())
-  {
-    #if 0
-    if(AWSConnectionCheck()==false);
-    {
-      AWS_init();
-      //tryAWSReconnect=false;
-    }
-    #endif
-
-    if(gPubCount > 3)
-    {
-      ESP.restart();
-    }
-
-    gPubCount++;
-    printf("BtnA.wasPressed Test \n");
-    //menu_screen_03();
-    //M5.Lcd.fillScreen(BLACK);
-    //connectAWS();
-     Serial.println("");
-    publishMessage(88, 99, 00);
-    Serial.println("");
-    client.loop();
-    //digitalWrite(LED, LOW);
-    delay(1000);  // MQTTの送信を待つ
-    test++;
-  }
-
-  //printf("main Loop test\n");
-
-
-  #endif
 
   timerWrite(timer, 0); //reset timer (feed watchdog)
 

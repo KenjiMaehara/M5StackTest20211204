@@ -1,12 +1,13 @@
+#include <M5Core2.h>
 #include "aws_iot_mqtt.h"
- #include "time.h"
- //#include <DHT.h>
- //#include <DHT_U.h>
- #include <WiFiClientSecure.h>
- #include <MQTTClient.h>
+#include "time.h"
+//#include <DHT.h>
+//#include <DHT_U.h>
+#include <WiFiClientSecure.h>
+#include <MQTTClient.h>
 #include <ArduinoJson.h>
- #include <WiFi.h>
- #include "menu/menu.h"
+#include <WiFi.h>
+#include "menu/menu.h"
  
  #define TIME_TO_SLEEP  300  // 測定周期（秒）
  
@@ -181,7 +182,7 @@ void AWS_task_init(void)
 
     xTaskCreatePinnedToCore(  vAwsMqttSubTask,       
                 "AWS subscribe Task",    
-                2048,              
+                4096,              
                 NULL,              
                 4,                 
                 NULL, 
@@ -191,7 +192,7 @@ void AWS_task_init(void)
 	
     xTaskCreatePinnedToCore(  vAwsMqttSubTask02,     
                 "AWS subscribe Task 02", 
-                2048,                   
+                4096,                   
                 NULL,                   
                 4,                       
                 NULL,
@@ -233,13 +234,78 @@ void vAwsMqttSubTask( void *pvParameters )
  
 }
 
+int test = 0;
+int oldTest = 0;
+
 
 void vAwsMqttSubTask02( void *pvParameters )
 {
   while(1)
   {
+    M5.update();
+    #if 1
+    if(msgTFTReceived == 1)
+    {
+      menu_screen_03();
 
-    vTaskDelay(100);
+      M5.Lcd.fillScreen(BLACK);
+      delay(2000);
+      msgTFTReceived = 0;
+    }
+
+    #if 1
+    if(test != oldTest)
+    {
+      oldTest = test;
+
+      M5.Lcd.fillScreen(BLACK);
+      M5.Lcd.setCursor(10, 10); //文字表示の左上位置を設定
+      M5.Lcd.setTextSize(3);
+      M5.Lcd.print("BtnA wasPressed Test");
+      M5.Lcd.print(test);
+      M5.Lcd.println("");
+      delay(2000);
+    }
+    #endif
+
+
+
+    if (M5.BtnA.wasPressed())
+    {
+      #if 0
+      if(AWSConnectionCheck()==false);
+      {
+        AWS_init();
+        //tryAWSReconnect=false;
+      }
+      #endif
+
+      if(gPubCount > 3)
+      {
+        ESP.restart();
+      }
+
+      gPubCount++;
+      printf("BtnA.wasPressed Test \n");
+      //menu_screen_03();
+      //M5.Lcd.fillScreen(BLACK);
+      //connectAWS();
+       Serial.println("");
+      publishMessage(88, 99, 00);
+      Serial.println("");
+      client.loop();
+      //digitalWrite(LED, LOW);
+      delay(1000);  // MQTTの送信を待つ
+      test++;
+    }
+
+    //printf("main Loop test\n");
+
+
+    #endif
+
+
+      vTaskDelay(100);
   }
 
 }

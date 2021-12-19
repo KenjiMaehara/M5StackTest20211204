@@ -90,6 +90,7 @@ void setup() {
 }
 
 int test = 0;
+int oldTest = 0;
 
 void loop() 
 {
@@ -97,11 +98,16 @@ void loop()
   #if 1
   if(msgTFTReceived == 1)
   {
-    test++;
-  
     menu_screen_03();
 
     M5.Lcd.fillScreen(BLACK);
+    delay(2000);
+    msgTFTReceived = 0;
+  }
+
+  if(test != oldTest)
+  {
+    oldTest = test;
 
     M5.Lcd.fillScreen(BLACK);
     M5.Lcd.setCursor(10, 10); //文字表示の左上位置を設定
@@ -110,10 +116,9 @@ void loop()
     M5.Lcd.print(test);
     M5.Lcd.println("");
     delay(2000);
-
-
-    msgTFTReceived = 0;
   }
+
+
 
 
   if (M5.BtnA.wasPressed())
@@ -143,8 +148,10 @@ void loop()
     //client.loop();
     //digitalWrite(LED, LOW);
     delay(1000);  // MQTTの送信を待つ
-  
+    test++;
   }
+
+
 
   #endif
 

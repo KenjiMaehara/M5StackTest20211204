@@ -106,7 +106,7 @@
  
    Serial.print("Connecting to AWS IOT");
  
-   while (!client.connect(THINGNAME)) {
+   while (!client.connect(serialID.c_str())) {
      Serial.print(".");
      delay(100);
    }

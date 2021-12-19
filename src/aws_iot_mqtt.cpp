@@ -239,7 +239,7 @@ void vAwsMqttSubTask( void *pvParameters )
 
     //printf("testestetsetetwtwtwtwtw");
 
-    delay(100);
+    vTaskDelay(100);
   }
  
 }
@@ -250,7 +250,7 @@ void vAwsMqttSubTask02( void *pvParameters )
   while(1)
   {
 
-    delay(100);
+    vTaskDelay(100);
   }
 
 }

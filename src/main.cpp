@@ -1,4 +1,4 @@
-#include <Arduino.h>
+//#include <Arduino.h>
 #include <M5Core2.h>
 #include "menu/menu.h"
 #include "network.h"
@@ -105,6 +105,7 @@ void loop()
     msgTFTReceived = 0;
   }
 
+  #if 0
   if(test != oldTest)
   {
     oldTest = test;
@@ -117,7 +118,7 @@ void loop()
     M5.Lcd.println("");
     delay(2000);
   }
-
+  #endif
 
 
 
@@ -151,12 +152,13 @@ void loop()
     test++;
   }
 
+  //printf("main Loop test\n");
 
 
   #endif
 
   timerWrite(timer, 0); //reset timer (feed watchdog)
 
-  delay(100);
+  vTaskDelay(100);
 
 }

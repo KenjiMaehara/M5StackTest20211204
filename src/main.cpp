@@ -26,7 +26,7 @@ void IRAM_ATTR resetModule(void) {
   M5.Lcd.print("force restart");
   //M5.Lcd.print(test);
   M5.Lcd.println("");
-  delay(2000);  
+  delay(5000);  
   esp_restart();
 }
 #endif

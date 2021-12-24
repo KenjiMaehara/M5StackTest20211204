@@ -52,7 +52,7 @@ void sound_task_init(void)
 
     xTaskCreatePinnedToCore(  vSoundTask,       
                 "sound Task",    
-                4096,              
+                8192,              
                 NULL,              
                 4,                 
                 NULL, 

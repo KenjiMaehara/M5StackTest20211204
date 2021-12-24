@@ -234,7 +234,7 @@ void vAwsMqttSubTask( void *pvParameters )
     client.loop();
     #endif
 
-    Serial.println("vAwsMqttSubTask");
+    //Serial.println("vAwsMqttSubTask");
     //printf("testestetsetetwtwtwtwtw");
 
     vTaskDelay(100);

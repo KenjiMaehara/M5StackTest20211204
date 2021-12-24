@@ -71,7 +71,10 @@ void SD_read_forSSID(void)
 			{
 				conpanyID = d.substring(d.indexOf(":")+1);
 			}
-
+            else if (strstr(d.c_str(),"#") == 0 || strstr(d.c_str(),"//") == 0 )
+			{
+				printf("comentOut:  %s\n",d.c_str());
+			}
 
 			d="";
 		}

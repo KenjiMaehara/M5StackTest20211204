@@ -5,6 +5,9 @@
 #include "aws_iot_mqtt.h"
 #include "sound.h"
 #include "esp_system.h"
+#include <lvgl.h>
+#include <Wire.h>
+#include <SPI.h>
 
 
 String PUB_TOPIC;
@@ -86,6 +89,9 @@ void setup() {
   //M5.Axp.SetSpkEnable(true); 
   sound_task_init();
   //sound_init();
+
+  setup_TFT();
+  printf("test11111111111111111\n");
 
 }
 

@@ -26,3 +26,4 @@ extern String certificateKey;
 extern String AWSEndpoint;
 
 extern int soundPlayFlag;
+extern void setup_TFT(void);

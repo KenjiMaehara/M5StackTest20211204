@@ -104,4 +104,6 @@ void loop()
 
   vTaskDelay(100);
 
+  TFT_test();
+
 }

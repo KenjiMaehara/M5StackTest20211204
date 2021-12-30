@@ -27,3 +27,4 @@ extern String AWSEndpoint;
 
 extern int soundPlayFlag;
 extern void setup_TFT(void);
+extern void TFT_test();

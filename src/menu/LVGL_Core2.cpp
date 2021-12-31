@@ -14,7 +14,6 @@
 #include <lvgl.h>
 #include <Wire.h>
 #include <SPI.h>
-#include <M5Core2.h>
 #include "menu/menu.h"
 
 TFT_eSPI tft = TFT_eSPI();

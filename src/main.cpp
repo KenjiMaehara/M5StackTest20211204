@@ -13,11 +13,11 @@
 String PUB_TOPIC;
 String SUB_TOPIC;
 
-
+#if 0
 //const int button = 0;         //gpio to use to trigger delay
 const int wdtTimeout = 20000;  //time in ms to trigger the watchdog
 hw_timer_t *timer = NULL;
-
+#endif
 
 
 #if 1
@@ -42,13 +42,13 @@ void setup() {
   //M5.Lcd.print("ハロー");
 
 
-
+  #if 0
   //pinMode(button, INPUT_PULLUP);                    //init control pin
   timer = timerBegin(0, 80, true);                  //timer 0, div 80
   timerAttachInterrupt(timer,&resetModule, true);  //attach callback
   timerAlarmWrite(timer, wdtTimeout * 1000, false); //set time in us
   timerAlarmEnable(timer);                          //enable interrupt
-
+  #endif
  
 
 
@@ -100,9 +100,9 @@ void loop()
 {
 
 
-  timerWrite(timer, 0); //reset timer (feed watchdog)
+  //timerWrite(timer, 0); //reset timer (feed watchdog)
 
-  vTaskDelay(100);
+  //vTaskDelay(100);
 
   TFT_test();
 

@@ -14,11 +14,9 @@
 #include <lvgl.h>
 #include <Wire.h>
 #include <SPI.h>
-#include <M5Core2.h>
-#include "menu/menu.h"
 
 
-test
+
 TFT_eSPI tft = TFT_eSPI();
 static lv_disp_buf_t disp_buf;
 static lv_color_t buf[LV_HOR_RES_MAX * 10];
@@ -54,7 +52,7 @@ void my_disp_flush(lv_disp_drv_t *disp,
   lv_disp_flush_ready(disp);
 }
 //=====================================================================
-void setup_TFT(void){
+void setup(void){
   M5.begin(true, true, true, true);
   tft.begin();
   tft.setRotation(1);
@@ -196,7 +194,7 @@ void setup_TFT(void){
   lv_label_set_text(label, "Third tab");
 }
 //=====================================================================
-void TFT_test(){
+void loop(){
   lv_task_handler(); /* let the GUI do its work */
   /*
   // Show approximate frame rate

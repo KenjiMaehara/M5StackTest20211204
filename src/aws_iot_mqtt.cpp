@@ -24,7 +24,7 @@
  MQTTClient client = MQTTClient(256);
 
  int msgReceived = false;
- int msgTFTReceived = false;
+ //int msgTFTReceived = false;
  int soundPlayFlag = false;
  
  #if 0
@@ -63,7 +63,7 @@
  
  void messageHandler(String &topic, String &payload) {
     msgReceived = true; 
-    msgTFTReceived = true;
+    //msgTFTReceived = true;
     soundPlayFlag = true;
    Serial.println("incoming: " + topic + " - " + payload);
  
@@ -250,8 +250,9 @@ void vAwsMqttSubTask02( void *pvParameters )
 {
   while(1)
   {
+
     M5.update();
-    #if 1
+    #if 0
     if(msgTFTReceived == 1)
     {
       menu_screen_03();
@@ -261,7 +262,7 @@ void vAwsMqttSubTask02( void *pvParameters )
       msgTFTReceived = 0;
     }
 
-    #if 1
+
     if(test != oldTest)
     {
       oldTest = test;
@@ -310,10 +311,9 @@ void vAwsMqttSubTask02( void *pvParameters )
     //printf("main Loop test\n");
 
 
-    #endif
 
 
-      vTaskDelay(100);
+      vTaskDelay(10);
   }
 
 }

@@ -56,7 +56,7 @@ void sound_task_init(void)
                 NULL,              
                 4,                 
                 NULL, 
-                0);
+                1);
 }
 
 

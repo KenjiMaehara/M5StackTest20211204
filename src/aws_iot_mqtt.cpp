@@ -194,7 +194,7 @@ void AWS_task_init(void)
                 NULL,              
                 4,                 
                 NULL, 
-                0);
+                1);
 
 
 	
@@ -204,7 +204,7 @@ void AWS_task_init(void)
                 NULL,                   
                 4,                       
                 NULL,
-                0);
+                1);
 }
 
 

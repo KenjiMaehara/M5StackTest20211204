@@ -98,12 +98,9 @@ void setup() {
 
 void loop() 
 {
-
-
   timerWrite(timer, 0); //reset timer (feed watchdog)
 
-  vTaskDelay(100);
-
-  TFT_test();
+  lv_task_handler(); /* let the GUI do its work */
+  delay(5);
 
 }

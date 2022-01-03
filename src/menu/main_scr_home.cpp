@@ -2,7 +2,7 @@
 #include "gui_guider.h"
 
 
-void main_scr_alarm(lv_ui *ui)
+void main_scr_home(lv_ui *ui)
 {
  //-------------------------------------------------------------------
   /*Create a Tab view object*/

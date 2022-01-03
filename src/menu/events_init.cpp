@@ -2,6 +2,7 @@
 #include "events_init.h"
 #include <stdio.h>
 #include "gui_guider.h"
+#include "aws_iot_mqtt.h"
 
 
 
@@ -14,9 +15,24 @@ static void bell_sound_handler(lv_obj_t * obj, lv_event_t event)
 		case LV_EVENT_PRESSED:
 		{
     		//guider_load_screen(SCR_LOADER);   
-			printf("bell_sound_handler\n");     
-    	    //guider_load_screen(SCR_TIME_SHOW);
-    	    //printf("press WifiSetup\n");            
+			printf("bell_sound_handler\n");
+
+            if(gPubCount > 3)
+            {
+              ESP.restart();
+            }
+                   gPubCount++;
+            printf("BtnA.wasPressed Test \n");
+            //menu_screen_03();
+            //M5.Lcd.fillScreen(BLACK);
+            //connectAWS();
+            Serial.println("");
+            publishMessage(88, 99, 00);
+            Serial.println("");
+            client.loop();
+            //digitalWrite(LED, LOW);
+            delay(1000);  // MQTTの送信を待つ
+            test++;     
 		}
 			break;
 		default:

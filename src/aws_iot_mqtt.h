@@ -45,6 +45,8 @@ extern int msgTFTReceived;
 extern void publishMessage(float temperature, float humidity, int discomfort_index);
 extern void connectAWS();
 
+extern int test;
+extern int oldTest;
 
 
 #endif

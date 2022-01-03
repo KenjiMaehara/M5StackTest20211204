@@ -17,5 +17,6 @@ typedef struct
 
 
 extern void main_scr_home(lv_ui *ui);
-
+extern void setup_ui(lv_ui *ui);
+extern lv_ui guider_ui;
 

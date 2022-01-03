@@ -8,6 +8,7 @@
 #include <lvgl.h>
 #include <Wire.h>
 #include <SPI.h>
+#include "menu/gui_guider.h"
 
 
 String PUB_TOPIC;
@@ -92,6 +93,7 @@ void setup() {
 
   setup_TFT();
   printf("test11111111111111111\n");
+  setup_ui(&guider_ui);
 
 }
 

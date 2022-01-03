@@ -100,8 +100,8 @@ void main_scr_home(lv_ui *ui)
   lv_obj_set_style_local_value_str(ui->main_btn3, LV_BTN_PART_MAIN, LV_STATE_DEFAULT, "Ripple");
 
   ui->main_label = lv_label_create(ui->main_tab2, NULL);
-  lv_label_set_text(ui->main_label, "Second tab");
+  lv_label_set_text(ui->main_label, "Second tab_002");
 
   ui->main_label = lv_label_create(ui->main_tab3, NULL);
-  lv_label_set_text(ui->main_label, "Third tab");
+  lv_label_set_text(ui->main_label, "Third tab_002");
 }

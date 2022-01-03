@@ -4,9 +4,11 @@
 
 void main_scr_home(lv_ui *ui)
 {
+  ui->home = lv_obj_create(NULL, NULL);
  //-------------------------------------------------------------------
   /*Create a Tab view object*/
-  ui->main_tabview = lv_tabview_create(lv_scr_act(), NULL);
+  //ui->main_tabview = lv_tabview_create(lv_scr_act(), NULL);
+  ui->main_tabview = lv_tabview_create(ui->home, NULL);
   
   //-------------------------------------------------------------------
   /*Add 3 tabs (the tabs are page (lv_page) and can be scrolled*/

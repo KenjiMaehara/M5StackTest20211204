@@ -92,6 +92,8 @@ void setup_TFT(void){
   indev_drv.read_cb = my_touchpad_read;
   lv_indev_drv_register(&indev_drv);
   
+
+  #if 0
   //-------------------------------------------------------------------
   /*Create a Tab view object*/
   lv_obj_t *tabview;
@@ -193,6 +195,7 @@ void setup_TFT(void){
 
   label = lv_label_create(tab3, NULL);
   lv_label_set_text(label, "Third tab");
+  #endif
 }
 //=====================================================================
 void TFT_test(){

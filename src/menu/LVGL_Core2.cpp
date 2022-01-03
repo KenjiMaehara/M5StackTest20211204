@@ -16,6 +16,7 @@
 #include <SPI.h>
 #include <M5Core2.h>
 #include "menu/menu.h"
+#include "gui_guider.h"
 
 TFT_eSPI tft = TFT_eSPI();
 static lv_disp_buf_t disp_buf;

@@ -1,3 +1,7 @@
+#ifndef __MENU_H_
+#define __MENU_H_
+
+
 #include <Arduino.h>
 //#include <M5Stack.h>
 
@@ -28,3 +32,6 @@ extern String AWSEndpoint;
 extern int soundPlayFlag;
 extern void setup_TFT(void);
 extern void TFT_test();
+
+
+#endif

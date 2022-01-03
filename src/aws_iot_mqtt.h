@@ -1,3 +1,7 @@
+#ifndef __AWS_IOT_MQTT_H_
+#define __AWS_IOT_MQTT_H_
+
+
 //#include <pgmspace.h>
 #include <MQTTClient.h>
  
@@ -40,3 +44,7 @@ extern void AWS_task_init(void);
 extern int msgTFTReceived;
 extern void publishMessage(float temperature, float humidity, int discomfort_index);
 extern void connectAWS();
+
+
+
+#endif

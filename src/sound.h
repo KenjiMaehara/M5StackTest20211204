@@ -1,3 +1,6 @@
+#ifndef __SOUND_H_
+#define __SOUND_H_
+
 #include "AudioFileSourceSD.h"
 #include "AudioFileSourceID3.h"
 #include "AudioGeneratorMP3.h"
@@ -15,3 +18,6 @@ extern AudioGeneratorMP3 *mp3;
 extern AudioFileSourceSD *file;
 extern AudioOutputI2S *out;
 extern AudioFileSourceID3 *id3;
+
+
+#endif

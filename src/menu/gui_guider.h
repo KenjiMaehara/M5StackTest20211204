@@ -1,3 +1,6 @@
+#ifndef __GUI_GUIDER_H_
+#define __GUI_GUIDER_H_
+
 #include <lvgl.h>
 
 
@@ -20,3 +23,6 @@ extern void main_scr_home(lv_ui *ui);
 extern void setup_ui(lv_ui *ui);
 extern lv_ui guider_ui;
 
+
+
+#endif

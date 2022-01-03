@@ -1,5 +1,6 @@
 #include <lvgl.h>
 #include "gui_guider.h"
+#include "events_init.h"
 
 
 void main_scr_home(lv_ui *ui)
@@ -106,4 +107,6 @@ void main_scr_home(lv_ui *ui)
 
   ui->main_label = lv_label_create(ui->main_tab3, NULL);
   lv_label_set_text(ui->main_label, "Third tab_002");
+
+  main_scr_home_init(ui);
 }

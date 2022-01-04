@@ -222,7 +222,7 @@ void vAwsMqttSubTask( void *pvParameters )
 //      This code will run whenever a message is received on the SUBSCRIBE_TOPIC_NAME Topic
         delay(100);
         msgReceived = 0;
-        printf("testestetsetetwtwtwtwtw");
+        Serial.println("testestetsetetwtwtwtwtw");
         Serial.print("Received Message:");
         Serial.println("");
       Serial.println("##############################################");
@@ -281,31 +281,9 @@ void vAwsMqttSubTask02( void *pvParameters )
 
     if (M5.BtnA.wasPressed())
     {
-      #if 0
-      if(AWSConnectionCheck()==false);
-      {
-        AWS_init();
-        //tryAWSReconnect=false;
-      }
-      #endif
-
-      if(gPubCount > 3)
-      {
-        ESP.restart();
-      }
-
-      gPubCount++;
-      printf("BtnA.wasPressed Test \n");
-      //menu_screen_03();
-      //M5.Lcd.fillScreen(BLACK);
-      //connectAWS();
-       Serial.println("");
-      publishMessage(88, 99, 00);
-      Serial.println("");
-      client.loop();
-      //digitalWrite(LED, LOW);
+      gAWSpublish = true;
       delay(1000);  // MQTTの送信を待つ
-      test++;
+
     }
 
     //printf("main Loop test\n");

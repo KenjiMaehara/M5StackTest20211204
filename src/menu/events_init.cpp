@@ -3,12 +3,13 @@
 #include <stdio.h>
 #include "gui_guider.h"
 #include "aws_iot_mqtt.h"
+#include "menu/menu.h"
 
 
 
 static void bell_sound_handler(lv_obj_t * obj, lv_event_t event)
 {
-    printf("bell_sound_handler\n");
+    //printf("bell_sound_handler\n");
 
 	switch (event)
 	{
@@ -17,23 +18,9 @@ static void bell_sound_handler(lv_obj_t * obj, lv_event_t event)
     		//guider_load_screen(SCR_LOADER);   
 			printf("bell_sound_handler\n");
 
-            if(gPubCount > 3)
-            {
-              ESP.restart();
-            }
-                   gPubCount++;
-            printf("BtnA.wasPressed Test \n");
-            //menu_screen_03();
-            //M5.Lcd.fillScreen(BLACK);
-            //connectAWS();
-            Serial.println("");
-            publishMessage(88, 99, 00);
-            Serial.println("");
-            client.loop();
-            //digitalWrite(LED, LOW);
-            delay(1000);  // MQTTの送信を待つ
-            test++;     
-		}
+      gAWSpublish = true;
+      delay(1000);  // MQTTの送信を待つ
+    }
 			break;
 		default:
 			break;

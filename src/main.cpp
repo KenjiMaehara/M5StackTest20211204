@@ -98,11 +98,35 @@ void setup() {
 }
 
 
+int gAWSpublish = false;
+
 void loop() 
 {
   timerWrite(timer, 0); //reset timer (feed watchdog)
 
   lv_task_handler(); /* let the GUI do its work */
   delay(5);
+
+  if(gAWSpublish == true)
+  {
+    if(gPubCount > 3)
+    {
+      ESP.restart();
+    }
+           gPubCount++;
+    printf("BtnA.wasPressed Test \n");
+    //menu_screen_03();
+    //M5.Lcd.fillScreen(BLACK);
+    //connectAWS();
+    Serial.println("");
+    publishMessage(88, 99, 00);
+    Serial.println("");
+    client.loop();
+    //digitalWrite(LED, LOW);
+    delay(1000);  // MQTTの送信を待つ
+    test++;
+    gAWSpublish = false;
+
+  }
 
 }
